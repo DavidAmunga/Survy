@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Survy</string>
+    <string-array name="courses">
+        <item>BIF</item>
+        <item>BTC</item>
+        <item>BBIT</item>
+        <item>SFAE</item>
+        <item>BCOM</item>
+        <item>ACCA</item>
+        <item>BTH</item>
+        <item>CPA</item>
+        <item>LLB</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="stepLabels">
+        <item>Profile</item>
+        <item>Units Taken</item>
+    </string-array>
+</resources>

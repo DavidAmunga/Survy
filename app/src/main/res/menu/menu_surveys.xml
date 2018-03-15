@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/nav_my_surveys"
+        android:title="My Surveys"
+        app:showAsAction="never"/>
+    <item android:id="@+id/nav_normal_surveys"
+        android:title="Normal Surveys"
+        app:showAsAction="never"/>
+
+</menu>

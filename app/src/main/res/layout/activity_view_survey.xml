@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.buttercell.survy.ViewSurvey"
+    android:background="@drawable/bg"
+    >
+    <TextView
+        android:id="@+id/txtSurveyName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="41dp"
+        android:textColor="@color/colorWhite"
+        android:textSize="30sp"
+        tools:text="Survey Name" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </RelativeLayout>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/txtSurveyName"
+        android:layout_gravity="center"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="110dp"
+        android:src="@mipmap/ic_launcher_round"
+        app:civ_border_color="@color/colorPrimaryDark"
+        app:civ_border_width="5dp"
+        app:civ_circle_background_color="@color/colorPrimary" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/survey_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/txtSurveyName"
+        android:layout_gravity="center"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="110dp"
+        android:src="@mipmap/ic_launcher_round"
+        app:civ_border_color="@color/colorAccent"
+        app:civ_border_width="5dp"
+        app:civ_circle_background_color="@color/colorPrimary" />
+
+
+
+    <TextView
+        android:id="@+id/lbl1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/survey_image"
+        android:layout_centerHorizontal="true"
+        android:text="By"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/colorWhite"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/txtUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lbl1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
+        android:textColor="@color/colorAccentDark"
+        android:textSize="25sp"
+        tools:text="Username" />
+
+
+    <TextView
+        android:id="@+id/txtDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtUser"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:layout_marginTop="28dp"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorWhite"
+        android:textSize="30sp"
+        tools:text="Survey Description" />
+
+
+
+
+
+
+
+
+    <Button
+        android:id="@+id/btnSurveyDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txtDescription"
+        android:layout_margin="20dp"
+        android:layout_marginTop="69dp"
+        android:background="@drawable/button_green"
+        android:text="View Details"
+        android:textColor="@color/colorPrimaryDark" />
+
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/btnSurveyDetails"
+        android:layout_margin="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_primary"
+
+        android:text="START"
+        android:textColor="@color/colorWhite" />
+
+
+</RelativeLayout>

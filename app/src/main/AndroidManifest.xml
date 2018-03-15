@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.buttercell.survy">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".student.StudentLogin" />
+        <activity android:name=".student.StudentRegister" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+    <activity android:name=".student.StudentAccountSetup" />
+    <activity android:name=".student.StudentHome" />
+    <activity android:name=".Welcome"></activity>
+    <activity android:name=".lecturer.LecturerRegister" />
+    <activity android:name=".lecturer.LecturerAccountSetup" />
+    <activity android:name=".lecturer.LecturerHome" />
+    <activity android:name=".lecturer.LecturerLogin" />
+    <activity android:name=".lecturer.SetSurvey" />
+    <activity android:name=".lecturer.survey.SurveyTest" />
+    <activity android:name=".ViewSurvey" />
+    <activity android:name=".DoSurvey" />
+    <activity android:name=".SurveyDetails" />
+    <activity
+        android:name=".QuestionDetails"
+        android:parentActivityName=".SurveyDetails" />
+    <activity android:name=".AppIntro">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+</application>
+
+</manifest>

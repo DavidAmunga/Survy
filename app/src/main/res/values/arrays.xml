@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string-array name="questions">
+        <item>Single choice</item>
+        <item>Multi choice</item>
+        <item>Open</item>
+    </string-array>
+    <string-array name="surveyStages">
+        <item>Survey I</item>
+        <item>Survey II</item>
+        <item>Questions</item>
+        <item>Review</item>
+    </string-array>
+    <string-array name="semesters">
+    <item>One</item>
+    <item>Two</item>
+    </string-array>
+    <string-array name="years">
+        <item>One</item>
+        <item>Two</item>
+        <item>Three</item>
+        <item>Four</item>
+    </string-array>
+</resources>

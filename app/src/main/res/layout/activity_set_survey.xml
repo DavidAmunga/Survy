@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg"
+    tools:context="com.buttercell.survy.lecturer.SetSurvey">
+
+
+    <com.rakshakhegde.stepperindicator.StepperIndicator
+        android:id="@+id/stepperIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        app:stpi_showLabels="true"
+        app:stpi_labelColor="@color/colorAccent"
+        app:stpi_indicatorColor="@color/colorAccent"
+        app:stpi_lineColor="@color/colorAccent"
+        app:stpi_lineDoneColor="@color/colorAccentDark"
+        app:stpi_circleColor="@color/colorAccent"
+        app:stpi_labels="@array/surveyStages"
+        />
+
+    <com.buttercell.survy.helpers.NonSwipeableViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="15dp"
+        android:layout_below="@id/stepperIndicator"/>
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.buttercell.survy.AppIntro"
+    android:background="@drawable/bg"
+    >
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="81dp"
+        android:src="@drawable/logo" />
+
+
+
+
+    <ak.sh.ay.oblique.ObliqueView
+        android:id="@+id/obliqueView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:scaleType="centerCrop"
+        app:angle="LEFT_BOTTOM_TO_RIGHT_TOP"
+        app:basecolor="@color/colorAccent"
+        app:radius="18"
+        app:ending_slant_angle="10"
+        app:starting_slant_angle="10"
+        app:type="solid_color" />
+
+    <TextView
+        android:id="@+id/slogan_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/obliqueView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="71dp"
+        android:text="Making Surveys easier"
+        android:textColor="@color/colorWhite"
+        android:textSize="35sp"
+        android:rotation="-10"
+        android:textStyle="bold" />
+
+</RelativeLayout>

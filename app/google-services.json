@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "519311578065",
+    "firebase_url": "https://survy-456e8.firebaseio.com",
+    "project_id": "survy-456e8",
+    "storage_bucket": "survy-456e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:519311578065:android:261b09cc27ecaa58",
+        "android_client_info": {
+          "package_name": "com.buttercell.survy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "519311578065-jlfqe0ent231kg4484oi90n13q4e05to.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.buttercell.survy",
+            "certificate_hash": "e56ea54ff60509a7279dc5f74fe0ee3d8cd17eb1"
+          }
+        },
+        {
+          "client_id": "519311578065-rf5u7hlvps9r2mrdbc3inib7djnl7mnc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtI-SqKpJgVwapeYzgKbUB6WDTjbKrCFE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "519311578065-rf5u7hlvps9r2mrdbc3inib7djnl7mnc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

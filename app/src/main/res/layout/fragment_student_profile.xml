@@ -1,0 +1,66 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.buttercell.survy.lecturer.LecturerProfileFragment">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:src="@mipmap/ic_launcher_round"
+        app:civ_border_color="@color/colorAccent"
+        app:civ_border_width="10dp"
+        app:civ_circle_background_color="@color/colorPrimary"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Username"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:textSize="40sp"
+        android:id="@+id/profileUser"
+        android:textColor="@color/colorWhite"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="4th Year"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:id="@+id/profileYear"
+        android:textColor="@color/colorWhite"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="BBIT"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:textSize="25sp"
+        android:id="@+id/profileCourse"
+        android:textColor="@color/colorWhite"
+        />
+
+
+
+    <Button
+        android:id="@+id/logOut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_image"
+        android:layout_margin="20dp"
+        android:background="@drawable/button_green"
+        android:text="Log out"
+        android:textColor="@color/colorWhite" />
+
+
+</LinearLayout>

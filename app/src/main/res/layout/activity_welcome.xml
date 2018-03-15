@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.buttercell.survy.Welcome"
+    android:background="@drawable/bg">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="76dp"
+        android:text="I am a"
+        android:textColor="@color/colorWhite"
+        android:textSize="35sp"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:id="@+id/lblTeacher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="74dp"
+        android:text="Lecturer"
+        android:textAllCaps="false"
+        android:padding="10dp"
+        android:background="@drawable/button_red"
+        android:textColor="@color/colorWhite"
+        android:textSize="50sp"
+        />
+
+
+    <Button
+        android:id="@+id/lblStudent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_below="@+id/lblTeacher"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="74dp"
+        android:text="Student"
+        android:textAllCaps="false"
+        android:padding="10dp"
+        android:background="@drawable/button_green"
+        android:textColor="@color/colorWhite"
+        android:textSize="50sp"
+        />
+
+
+
+
+</RelativeLayout>

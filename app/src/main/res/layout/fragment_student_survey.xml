@@ -1,0 +1,71 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.buttercell.survy.lecturer.LecturerSurveyFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lineNewSurvey"
+            android:background="@drawable/card_background_red"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="New Surveys"
+                android:textSize="20sp"
+                android:textColor="@color/colorWhite"
+                android:layout_margin="10dp"
+                />
+
+        </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/newSurveyList"
+            >
+        </android.support.v7.widget.RecyclerView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/completedSurveys"
+            android:background="@drawable/card_background_green"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Completed Surveys"
+                android:textSize="20sp"
+                android:id="@+id/txtSurveyTitle"
+                android:textColor="@color/colorWhite"
+                android:layout_margin="10dp"
+                />
+
+        </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/surveyList"
+            >
+        </android.support.v7.widget.RecyclerView>
+
+
+
+
+    </LinearLayout>
+
+
+
+
+</FrameLayout>
