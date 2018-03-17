@@ -77,7 +77,7 @@ public class SurveyDetails extends AppCompatActivity {
                                     if (documentSnapshot.exists()) {
                                         Log.d(TAG, "onEvent: SingleChoice");
                                         Question question = documentSnapshot.toObject(Question.class);
-                                        goToQuestionDetails(thisQuestion, question, finalI,"SingleChoice");
+                                        goToQuestionDetails(thisQuestion, question, finalI, "SingleChoice");
 
 
                                     } else {
@@ -87,7 +87,7 @@ public class SurveyDetails extends AppCompatActivity {
                                                 if (documentSnapshot.exists()) {
                                                     Log.d(TAG, "onEvent: MultiChoice");
                                                     Question question = documentSnapshot.toObject(Question.class);
-                                                    goToQuestionDetails(thisQuestion, question, finalI,"MultiChoice");
+                                                    goToQuestionDetails(thisQuestion, question, finalI, "MultiChoice");
 
 
                                                 } else {
@@ -97,7 +97,7 @@ public class SurveyDetails extends AppCompatActivity {
                                                             if (documentSnapshot.exists()) {
                                                                 Log.d(TAG, "onEvent: OpenChoice");
                                                                 Question question = documentSnapshot.toObject(Question.class);
-                                                                goToQuestionDetails(thisQuestion, question, finalI,"OpenChoice");
+                                                                goToQuestionDetails(thisQuestion, question, finalI, "OpenChoice");
 
 
                                                             }
@@ -147,7 +147,7 @@ public class SurveyDetails extends AppCompatActivity {
 
     }
 
-    private void goToQuestionDetails(Question thisQuestion, Question question, int finalI,String choice) {
+    private void goToQuestionDetails(Question thisQuestion, Question question, int finalI, String choice) {
         if (question.getQuestion().equals(thisQuestion.getQuestion())) {
             Log.d(TAG, "goToQuestionDetails: " + thisQuestion.getQuestion());
             String questionKey = questionKeys.get(finalI);

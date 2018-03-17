@@ -135,9 +135,11 @@ public class Welcome extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.lblTeacher:
                 startActivity(new Intent(Welcome.this, LecturerLogin.class).putExtra("role", "teacher"));
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                 break;
             case R.id.lblStudent:
                 startActivity(new Intent(Welcome.this, StudentLogin.class).putExtra("role", "student"));
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                 break;
         }
     }

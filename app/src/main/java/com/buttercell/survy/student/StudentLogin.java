@@ -62,6 +62,7 @@ public class StudentLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(StudentLogin.this, StudentRegister.class));
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
             }
         });
 
@@ -131,6 +132,7 @@ public class StudentLogin extends AppCompatActivity {
 
                     Toast.makeText(StudentLogin.this, "Welcome! " + student.getName(), Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(StudentLogin.this, StudentHome.class));
+                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                     finish();
                 } else {
                     progressDialog.dismiss();
@@ -138,5 +140,11 @@ public class StudentLogin extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.animation_enter,R.anim.animation_leave);
     }
 }

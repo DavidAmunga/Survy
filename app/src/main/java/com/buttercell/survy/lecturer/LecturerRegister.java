@@ -98,6 +98,7 @@ public class LecturerRegister extends AppCompatActivity {
                 break;
             case R.id.txt_signIn:
                 startActivity(new Intent(LecturerRegister.this, LecturerLogin.class));
+                overridePendingTransition(R.anim.animation_enter,R.anim.animation_leave);
                 break;
         }
     }
@@ -179,8 +180,9 @@ public class LecturerRegister extends AppCompatActivity {
                 Toast.makeText(LecturerRegister.this, "Great! A Few more steps", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(LecturerRegister.this, LecturerAccountSetup.class);
-
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                finish();
 
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -190,5 +192,12 @@ public class LecturerRegister extends AppCompatActivity {
                 Toast.makeText(LecturerRegister.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.animation_enter,R.anim.animation_leave);
     }
 }

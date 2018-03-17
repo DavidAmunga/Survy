@@ -4,8 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
     tools:context="com.buttercell.survy.lecturer.LecturerRegister">
+
+    <LinearLayout
+        android:id="@+id/layout_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/colorLightWhite"></LinearLayout>
+
+    </LinearLayout>
+
+
 
     <RelativeLayout
         android:id="@+id/card_container"
@@ -24,9 +46,8 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                app:cardCornerRadius="7dp"
-                app:cardElevation="2dp">
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -67,7 +88,6 @@
                             app:met_floatingLabel="highlight"
                             app:met_primaryColor="@color/colorPrimary"
                             app:met_singleLineEllipsis="true" />
-
 
                         <com.rengwuxian.materialedittext.MaterialEditText
                             android:id="@+id/txt_email"
@@ -128,7 +148,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/txt_confirm_pass"
                             android:layout_marginBottom="10dp"
-                            android:background="@color/colorPrimaryDark"
+                            android:background="@drawable/button_primary"
                             android:text="SIGN UP"
                             android:textColor="#ffffff"
                             android:textSize="20sp"

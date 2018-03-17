@@ -9,5 +9,6 @@
     <color name="colorAccentDark">#16DB58</color>
     <color name="colorRed">#FF3E4D</color>
     <color name="colorRedDark">#E5394E</color>
+    <color name="colorLightWhite">#F7F9F9</color>
 
 </resources>

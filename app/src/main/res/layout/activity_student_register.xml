@@ -5,15 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
     tools:context="com.buttercell.survy.student.StudentRegister">
+
+
+    <LinearLayout
+        android:id="@+id/layout_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/colorLightWhite"></LinearLayout>
+
+    </LinearLayout>
+
 
     <RelativeLayout
         android:id="@+id/card_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="40dp">
 
         <ScrollView
@@ -25,9 +50,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
-                app:cardCornerRadius="7dp"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="10dp"
 
-                app:cardElevation="2dp">
+                >
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -41,11 +67,9 @@
                         android:layout_gravity="center|top"
                         android:layout_marginBottom="5dp"
                         android:layout_marginTop="10dp"
-
                         android:text="Sign Up"
                         android:textColor="@color/colorPrimary"
                         android:textSize="32sp"
-
                         android:textStyle="bold" />
 
 
@@ -63,7 +87,6 @@
                             android:id="@+id/txt_userName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
                             android:hint="Enter Username......"
                             android:textStyle="normal"
                             app:met_baseColor="@color/colorPrimary"
@@ -71,33 +94,49 @@
                             app:met_primaryColor="@color/colorPrimary"
                             app:met_singleLineEllipsis="true" />
 
-                        <com.jaredrummler.materialspinner.MaterialSpinner
-                            android:id="@+id/spinnerCourse"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/txt_userName"
-                            app:ms_background_color="@color/colorDivider"
-                            app:ms_hint="Please select Course" />
+                            android:orientation="horizontal"
+                            android:weightSum="3">
 
-                        <TextView
-                            android:id="@+id/txtDateJoined"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/txt_userName"
-                            android:layout_marginTop="10dp"
-                            android:background="@color/colorDivider"
+                            <com.jaredrummler.materialspinner.MaterialSpinner
+                                android:id="@+id/spinnerCourse"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.4"
+                                android:background="@drawable/button_primary"
+                                android:textColor="@color/colorWhite"
+                                android:textColorHint="@color/colorWhite"
+                                app:ms_background_color="@color/colorPrimaryDark"
+                                app:ms_hint="Course"
+                                app:ms_hint_color="@color/colorWhite"
+                                app:ms_text_color="@color/colorWhite" />
 
-                            android:hint="Please select year joined"
-                            android:padding="10dp"
-                            android:textColor="@color/colorDivider" />
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2" />
+
+                            <TextView
+                                android:id="@+id/txtDateJoined"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.4"
+                                android:background="@drawable/button_primary"
+                                android:gravity="center"
+                                android:hint="Year joined"
+                                android:padding="10dp"
+                                android:textColor="@color/colorWhite"
+                                android:textColorHint="@color/colorWhite" />
+
+                        </LinearLayout>
 
 
                         <com.rengwuxian.materialedittext.MaterialEditText
                             android:id="@+id/txt_email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/spinnerUser"
-
                             android:hint="Enter Email......"
                             android:inputType="textEmailAddress"
                             android:textStyle="normal"
@@ -111,9 +150,6 @@
                             android:id="@+id/txt_pass"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_alignStart="@+id/txt_confirm_pass"
-                            android:layout_below="@+id/txt_email"
-
                             android:hint="Enter Password ......"
                             android:inputType="textPassword"
                             app:met_baseColor="@color/colorPrimary"
@@ -125,8 +161,6 @@
                             android:id="@+id/txt_confirm_pass"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/txt_pass"
-                            android:layout_centerHorizontal="true"
                             android:hint="Enter Confirm Password ......"
                             android:inputType="textPassword"
                             app:met_baseColor="@color/colorPrimary"
@@ -138,10 +172,8 @@
                             android:id="@+id/btnRegister"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/txt_confirm_pass"
                             android:layout_marginBottom="10dp"
-                            android:background="@color/colorPrimary"
-
+                            android:background="@drawable/button_primary"
                             android:text="SIGN UP"
                             android:textColor="#ffffff"
                             android:textSize="20sp"

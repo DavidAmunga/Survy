@@ -16,11 +16,11 @@ public class StudentAccountSetup extends AppCompatActivity {
 
     StudentSectionPagerAdapter studentSectionPagerAdapter;
     @BindView(R.id.stepperIndicator)
-    StepperIndicator stepperIndicator;
+    StepperIndicator indicator;
     @BindView(R.id.viewPager)
     NonSwipeableViewPager viewPager;
 
-    private StepperIndicator indicator;
+
 
 
     @Override
@@ -30,7 +30,7 @@ public class StudentAccountSetup extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-        indicator = findViewById(R.id.stepperIndicator);
+
 
 
         studentSectionPagerAdapter = new StudentSectionPagerAdapter(getSupportFragmentManager());

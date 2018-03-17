@@ -64,7 +64,9 @@ public class LecturerLogin extends AppCompatActivity {
         txtSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LecturerLogin.this, LecturerRegister.class));
+                Intent intent=new Intent(LecturerLogin.this, LecturerRegister.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
             }
         });
 
@@ -145,6 +147,11 @@ public class LecturerLogin extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.animation_enter,R.anim.animation_leave);
     }
 
 

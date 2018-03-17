@@ -51,6 +51,7 @@ public class StudentHome extends AppCompatActivity {
 
         if (Paper.book().read("currentStudent") == null) {
             startActivity(new Intent(getApplicationContext(), StudentLogin.class));
+            overridePendingTransition(R.anim.animation_enter,R.anim.animation_leave);
             finish();
         }
 

@@ -87,44 +87,54 @@ public class LecturerProfile extends Fragment {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btnNext.setEnabled(false);
-                btnNext.setText("Adding.....");
-                btnNext.setBackgroundColor(getResources().getColor(R.color.colorDivider));
-                final String id = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                StorageReference user_profile = FirebaseStorage.getInstance().getReference("ProfileImages").child(id + ".jpg");
-                user_profile.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            String downloadUri = task.getResult().getDownloadUrl().toString();
-                            Map<String, Object> userMap = new HashMap<>();
-                            userMap.put("image", downloadUri);
 
-                            Log.d(TAG, "onSuccess: Yes1");
+                if(imageUri!=null)
+                {
+                    btnNext.setEnabled(false);
+                    btnNext.setText("Adding.....");
+                    btnNext.setBackgroundColor(getResources().getColor(R.color.colorDivider));
+                    final String id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    StorageReference user_profile = FirebaseStorage.getInstance().getReference("ProfileImages").child(id + ".jpg");
+                    user_profile.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                String downloadUri = task.getResult().getDownloadUrl().toString();
+                                Map<String, Object> userMap = new HashMap<>();
+                                userMap.put("image", downloadUri);
 
-                            DocumentReference docRef = FirebaseFirestore.getInstance().collection("Lecturers").document(id);
-                            docRef.update(userMap)
-                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                        @Override
-                                        public void onSuccess(Void aVoid) {
-                                            Log.d(TAG, "onSuccess: Yes2");
-                                            Toast.makeText(getContext(), "Image Added!", Toast.LENGTH_SHORT).show();
-                                            Intent intent=new Intent(getActivity(),LecturerHome.class);
-                                            getActivity().startActivity(intent);
-                                            getActivity().finish();
-                                        }
+                                Log.d(TAG, "onSuccess: Yes1");
 
-                                    });
+                                DocumentReference docRef = FirebaseFirestore.getInstance().collection("Lecturers").document(id);
+                                docRef.update(userMap)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                Log.d(TAG, "onSuccess: Yes2");
+                                                Toast.makeText(getContext(), "Image Added!", Toast.LENGTH_SHORT).show();
+                                                Intent intent=new Intent(getActivity(),LecturerHome.class);
+                                                getActivity().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                                                getActivity().startActivity(intent);
+                                                getActivity().finish();
+                                            }
+
+                                        });
+
+                            }
 
                         }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                }
+                else
+                {
+                    Toast.makeText(getContext(), "Please upload your profile image!", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });

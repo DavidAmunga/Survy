@@ -118,6 +118,8 @@ public class StudentRegister extends AppCompatActivity implements DatePickerDial
                 break;
             case R.id.txt_signIn:
                 startActivity(new Intent(StudentRegister.this, StudentLogin.class));
+                overridePendingTransition(R.anim.animation_enter, R.anim.animation_leave);
+                finish();
                 break;
         }
     }
@@ -227,7 +229,7 @@ public class StudentRegister extends AppCompatActivity implements DatePickerDial
                 progressDialog.dismiss();
                 Toast.makeText(StudentRegister.this, "Great! A Few more steps", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(StudentRegister.this, StudentAccountSetup.class);
-
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                 startActivity(intent);
 
             }
@@ -254,5 +256,11 @@ public class StudentRegister extends AppCompatActivity implements DatePickerDial
         }
 
         txtDateJoined.setText(String.valueOf(finalYear));
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.animation_enter,R.anim.animation_leave);
     }
 }

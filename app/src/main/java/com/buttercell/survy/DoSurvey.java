@@ -40,6 +40,8 @@ public class DoSurvey extends AppCompatActivity {
 
     CollectionReference firestore;
 
+
+    //Initialize List Questions
     List<Question> singleQuestionList = new ArrayList<>();
     List<Question> multiQuestionList = new ArrayList<>();
     List<Question> openQuestionList = new ArrayList<>();
