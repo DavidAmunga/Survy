@@ -17,7 +17,7 @@ public class StudentSectionPagerAdapter extends FragmentPagerAdapter {
 
     public StudentSectionPagerAdapter(FragmentManager fm) {
         super(fm);
-        fragmentList.add(new StudentProfile());
+        fragmentList.add(new StudentSetupProfile());
         fragmentList.add(new StudentUnits());
 
     }

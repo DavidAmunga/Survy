@@ -45,8 +45,8 @@ public class LecturerHome extends AppCompatActivity {
 
         if (Paper.book().read("currentLecturer") == null) {
             startActivity(new Intent(getApplicationContext(), LecturerLogin.class));
+            overridePendingTransition(R.anim.animation_enter,R.anim.animation_leave);   
             finish();
-
         }
 
 

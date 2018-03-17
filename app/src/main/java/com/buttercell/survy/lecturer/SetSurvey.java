@@ -59,11 +59,10 @@ public class SetSurvey extends AppCompatActivity {
     public void onBackPressed() {
 
         int fragmentNo = viewPager.getCurrentItem();
-
-
         if(viewPager.getCurrentItem()==0)
         {
             startActivity(new Intent(SetSurvey.this,LecturerHome.class));
+            overridePendingTransition(R.anim.animation_enter,R.anim.animation_leave);
             finish();
         }
         else

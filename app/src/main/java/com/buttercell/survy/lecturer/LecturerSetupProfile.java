@@ -37,10 +37,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LecturerProfile extends Fragment {
+public class LecturerSetupProfile extends Fragment {
 
 
-    private static final String TAG = "StudentProfile";
+    private static final String TAG = "StudentSetupProfile";
 
     @BindView(R.id.profileImg)
     CircleImageView profileImg;
@@ -54,7 +54,7 @@ public class LecturerProfile extends Fragment {
     private Uri imageUri;
 
 
-    public LecturerProfile() {
+    public LecturerSetupProfile() {
         // Required empty public constructor
     }
 
@@ -92,7 +92,7 @@ public class LecturerProfile extends Fragment {
                 {
                     btnNext.setEnabled(false);
                     btnNext.setText("Adding.....");
-                    btnNext.setBackgroundColor(getResources().getColor(R.color.colorDivider));
+
                     final String id = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     StorageReference user_profile = FirebaseStorage.getInstance().getReference("ProfileImages").child(id + ".jpg");
                     user_profile.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {

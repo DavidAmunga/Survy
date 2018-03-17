@@ -17,7 +17,7 @@ public class LecturerSectionPagerAdapter extends FragmentPagerAdapter {
 
     public LecturerSectionPagerAdapter(FragmentManager fm) {
         super(fm);
-        fragmentList.add(new LecturerProfile());
+        fragmentList.add(new LecturerSetupProfile());
 
     }
 

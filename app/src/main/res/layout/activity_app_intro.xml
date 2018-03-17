@@ -30,7 +30,6 @@
         android:scaleType="centerCrop"
         app:angle="LEFT_BOTTOM_TO_RIGHT_TOP"
         app:basecolor="@color/colorAccent"
-        app:radius="18"
         app:ending_slant_angle="10"
         app:starting_slant_angle="10"
         app:type="solid_color" />

@@ -104,6 +104,7 @@ public class Welcome extends AppCompatActivity {
                     progressDialog.dismiss();
                     Toast.makeText(Welcome.this, "Welcome!", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(Welcome.this, StudentHome.class));
+                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                     finish();
                 }
                 else
@@ -115,6 +116,7 @@ public class Welcome extends AppCompatActivity {
                                 progressDialog.dismiss();
                                 Toast.makeText(Welcome.this, "Welcome! Lec!", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(Welcome.this, LecturerHome.class));
+                                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                                 finish();
                             }
                             else

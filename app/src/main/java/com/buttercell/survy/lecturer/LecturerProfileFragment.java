@@ -70,6 +70,7 @@ public class LecturerProfileFragment extends Fragment {
                 FirebaseAuth.getInstance().signOut();
                 Paper.book().destroy();
                 startActivity(new Intent(getContext(), LecturerLogin.class));
+                getActivity().overridePendingTransition(R.anim.animation_enter,R.anim.animation_leave);
                 getActivity().finish();
 
             }

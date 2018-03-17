@@ -44,16 +44,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:id="@+id/parentQuestionLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/parentQuestionLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-            </LinearLayout>
+
+                </LinearLayout>
+
 
             </ScrollView>
-
 
 
         </LinearLayout>
@@ -64,10 +65,11 @@
         android:id="@+id/btnNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
+        android:layout_gravity="end"
         android:layout_margin="16dp"
-        android:background="@drawable/button_primary"
+        android:background="@drawable/button_green"
         android:text="Next"
-        android:textColor="@color/colorWhite" />
+        android:textColor="@color/colorPrimaryDark" />
+
 
 </LinearLayout>

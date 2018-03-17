@@ -57,8 +57,7 @@ public class LecturerSurveyFragment extends Fragment {
     @BindView(R.id.fab)
     FloatingActionButton fab;
     Unbinder unbinder;
-    @BindView(R.id.surveyList)
-    RecyclerView surveyList;
+
 
     List<Survey> listSurvey = new ArrayList<>();
     List<Survey> newListSurvey = new ArrayList<>();
@@ -70,12 +69,6 @@ public class LecturerSurveyFragment extends Fragment {
 
     CollectionReference firestore;
     String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    @BindView(R.id.newSurveyList)
-    RecyclerView newSurveyList;
-    @BindView(R.id.lineNewSurvey)
-    LinearLayout lineNewSurvey;
-    @BindView(R.id.completedSurveys)
-    LinearLayout completedSurveys;
 
     AHBottomNavigation bottomNavigation;
     @BindView(R.id.mySurveys)
@@ -104,7 +97,6 @@ public class LecturerSurveyFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        setHasOptionsMenu(true);
         super.onViewCreated(view, savedInstanceState);
 
 
@@ -112,85 +104,18 @@ public class LecturerSurveyFragment extends Fragment {
 
         Log.d(TAG, "onViewCreated: " + userId);
 
-        surveyList.setLayoutManager(new LinearLayoutManager(getContext()));
-        surveyList.setHasFixedSize(true);
-
-        newSurveyList.setLayoutManager(new LinearLayoutManager(getContext()));
-        newSurveyList.setHasFixedSize(true);
 
         mySurveyList.setLayoutManager(new LinearLayoutManager(getContext()));
         mySurveyList.setHasFixedSize(true);
 
 
-        getNormalSurveys();
+        getMySurveys();
 
 
     }
 
-    private void getNormalSurveys() {
-        listSurvey.clear();
-        listDoneSurvey.clear();
-        newListSurvey.clear();
-        mySurveys.clear();
-
-        newSurveyList.setVisibility(View.VISIBLE);
-        lineNewSurvey.setVisibility(View.VISIBLE);
-
-        surveyList.setVisibility(View.VISIBLE);
-        completedSurveys.setVisibility(View.VISIBLE);
-
-        lineMySurveys.setVisibility(View.GONE);
-        mySurveyList.setVisibility(View.GONE);
-
-
-        Log.d(TAG, "getNormalSurveys: Start");
-        firestore = FirebaseFirestore.getInstance().collection("Lecturers").document(userId).collection("Surveys");
-
-
-        firestore.addSnapshotListener(getActivity(), new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
-                Log.d(TAG, "onEvent: " + documentSnapshots.size());
-                if (documentSnapshots.size() == 0) {
-                    Log.d(TAG, "onEvent: Survey: New");
-                    setNewSurveys();
-                } else {
-                    for (DocumentChange doc : documentSnapshots.getDocumentChanges()) {
-                        Log.d(TAG, "Survey: Exist");
-                        if (doc.getType() == DocumentChange.Type.ADDED) {
-                            String key = doc.getDocument().getId();
-
-
-                            listDoneSurvey.add(key);
-
-                            Log.d(TAG, "Done Survey: " + listDoneSurvey.size());
-
-                            setSurveys();
-
-                        }
-                    }
-                }
-            }
-        });
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.nav_my_surveys:
-                getMySurveys();
-                return true;
-            case R.id.nav_normal_surveys:
-                getNormalSurveys();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     private void getMySurveys() {
-        surveyList.removeAllViews();
         Log.d(TAG, "getMySurveys: Start");
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Surveys");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -207,18 +132,6 @@ public class LecturerSurveyFragment extends Fragment {
 
                         SurveyAdapter adapter = new SurveyAdapter(mySurveys, getContext());
 
-
-                        Log.d(TAG, "onDataChange: mySurveys" + surveyList.getAdapter().getItemCount());
-
-
-                        lineMySurveys.setVisibility(View.VISIBLE);
-                        mySurveyList.setVisibility(View.VISIBLE);
-
-                        newSurveyList.setVisibility(View.GONE);
-                        lineNewSurvey.setVisibility(View.GONE);
-
-                        surveyList.setVisibility(View.GONE);
-                        completedSurveys.setVisibility(View.GONE);
 
                         mySurveyList.setAdapter(adapter);
 
@@ -239,13 +152,6 @@ public class LecturerSurveyFragment extends Fragment {
 
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater = getActivity().getMenuInflater();
-        inflater.inflate(R.menu.menu_surveys, menu);
-    }
-
 
     @Override
     public void onAttach(Context context) {
@@ -262,114 +168,6 @@ public class LecturerSurveyFragment extends Fragment {
         }
     }
 
-
-    private void setNewSurveys() {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Surveys");
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-
-                    survey = postSnapshot.getValue(Survey.class);
-
-                    newListSurvey.add(survey);
-                    int surveyNo = newListSurvey.size();
-                    if (surveyNo > 0) {
-                        createNotification(String.valueOf(surveyNo));
-                    }
-
-
-                    NewSurveyAdapter adapter = new NewSurveyAdapter(newListSurvey, getContext());
-
-                    newSurveyList.setAdapter(adapter);
-
-                    if (newListSurvey.size() == 0) {
-                        newSurveyList.setVisibility(View.GONE);
-                        lineNewSurvey.setVisibility(View.GONE);
-                    }
-                }
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-    }
-
-    private void setSurveys() {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Surveys");
-
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    if (listDoneSurvey.size() > 0) {
-                        if (listDoneSurvey.contains(postSnapshot.getKey())) {
-                            survey = postSnapshot.getValue(Survey.class);
-
-                            Log.d(TAG, "onDataChange: Done Survey" + listSurvey);
-
-                            if (listSurvey.size() < listDoneSurvey.size()) {
-                                listSurvey.add(survey);
-
-                            }
-
-                            int surveyNo = listSurvey.size();
-
-
-                            SurveyAdapter adapter = new SurveyAdapter(listSurvey, getContext());
-
-                            surveyList.setAdapter(adapter);
-
-                            if (listSurvey.size() == 0) {
-                                surveyList.setVisibility(View.GONE);
-                                completedSurveys.setVisibility(View.GONE);
-                            }
-                        } else {
-
-                            survey = postSnapshot.getValue(Survey.class);
-
-                            int size = (int) dataSnapshot.getChildrenCount() - listDoneSurvey.size();
-
-                            if (newListSurvey.size() < size) {
-                                newListSurvey.add(survey);
-                            }
-
-                            int surveyNo = newListSurvey.size();
-
-                            if (surveyNo > 0) {
-                                createNotification(String.valueOf(surveyNo));
-                            }
-
-
-                            NewSurveyAdapter adapter = new NewSurveyAdapter(newListSurvey, getContext());
-
-                            newSurveyList.setAdapter(adapter);
-
-                            if (newListSurvey.size() == 0) {
-                                newSurveyList.setVisibility(View.GONE);
-                                lineNewSurvey.setVisibility(View.GONE);
-                            }
-                        }
-
-
-                    }
-
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-    }
 
     private void createNotification(final String surveyNo) {
 
@@ -405,5 +203,6 @@ public class LecturerSurveyFragment extends Fragment {
     public void onViewClicked() {
 
         startActivity(new Intent(getActivity(), SetSurvey.class));
+        getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
     }
 }

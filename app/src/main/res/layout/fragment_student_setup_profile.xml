@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.buttercell.survy.lecturer.LecturerSetupProfile">
+    tools:context="com.buttercell.survy.student.StudentAccountSetup">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/btnNext"
         android:background="@drawable/button_green"
-        android:text="FINISH"
+        android:text="NEXT"
         android:layout_margin="20dp"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"

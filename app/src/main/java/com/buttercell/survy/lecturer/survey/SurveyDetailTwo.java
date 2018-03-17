@@ -22,6 +22,8 @@ import com.buttercell.survy.common.Common;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.w3c.dom.Text;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -84,9 +86,6 @@ public class SurveyDetailTwo extends Fragment {
             @Override
             public void onClick(View v) {
 
-                btnNext.setEnabled(false);
-                btnNext.setText("Adding...");
-
 
                 String survey_desc = surveyDescription.getText().toString();
                 int qstNo = Integer.parseInt(questionNo.getText().toString());
@@ -94,7 +93,11 @@ public class SurveyDetailTwo extends Fragment {
                 String sem = spinnerSem.getSelectedItem().toString();
 
 
-                if (!TextUtils.isEmpty(survey_desc) && qstNo>0) {
+                if (!TextUtils.isEmpty(survey_desc) && qstNo>0 && !TextUtils.isEmpty(questionNo.getText().toString())) {
+
+                    btnNext.setEnabled(false);
+                    btnNext.setText("Adding...");
+
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Surveys").child(Common.surveyKey);
                     ref.child("year").setValue(year);
                     ref.child("sem").setValue(sem);
