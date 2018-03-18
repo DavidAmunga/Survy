@@ -32,9 +32,10 @@
             android:layout_height="wrap_content"
             tools:text="User name"
             android:gravity="end"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:id="@+id/txtAnswer"
-            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
+            android:textColor="@color/colorAccentDark"
             />
 
 

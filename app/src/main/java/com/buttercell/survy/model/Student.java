@@ -7,11 +7,11 @@ import java.io.Serializable;
  */
 
 public class Student implements Serializable {
-    private String course,dateJoined,email,image,name;
+    private String course,currentYear,email,image,name;
 
     public Student(String course, String dateJoined, String email, String image, String name) {
         this.course = course;
-        this.dateJoined = dateJoined;
+        this.currentYear = dateJoined;
         this.email = email;
         this.image = image;
         this.name = name;
@@ -28,12 +28,12 @@ public class Student implements Serializable {
         this.course = course;
     }
 
-    public String getDateJoined() {
-        return dateJoined;
+    public String getCurrentYear() {
+        return currentYear;
     }
 
-    public void setDateJoined(String dateJoined) {
-        this.dateJoined = dateJoined;
+    public void setCurrentYear(String currentYear) {
+        this.currentYear = currentYear;
     }
 
     public String getEmail() {

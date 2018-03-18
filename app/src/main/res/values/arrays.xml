@@ -5,6 +5,7 @@
     <string-array name="questions">
         <item>Single choice</item>
         <item>Multi choice</item>
+        <item>Likert Choice</item>
         <item>Open</item>
     </string-array>
     <string-array name="surveyStages">

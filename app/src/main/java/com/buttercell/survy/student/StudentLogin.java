@@ -97,6 +97,7 @@ public class StudentLogin extends AppCompatActivity {
                                 verifyUser(user, email, pass, user.getUid());
                             } else {
                                 // If sign in fails, display a message to the user.
+                                progressDialog.dismiss();
                                 Log.w(TAG, "createUserWithEmail:failure", task.getException());
                                 Toast.makeText(StudentLogin.this, task.getException().getLocalizedMessage(),
                                         Toast.LENGTH_SHORT).show();

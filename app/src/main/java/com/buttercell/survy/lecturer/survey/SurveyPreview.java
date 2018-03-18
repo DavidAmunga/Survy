@@ -55,6 +55,7 @@ public class SurveyPreview extends Fragment {
     private List<Question> singleChoiceList;
     private List<Question> multiChoiceList;
     private List<Question> openChoiceList;
+    private List<Question> likertChoiceList;
 
     public SurveyPreview() {
         // Required empty public constructor
@@ -88,6 +89,7 @@ public class SurveyPreview extends Fragment {
             singleChoiceList = QuestionsSingleton.getInstance().getSingleChoiceList();
             multiChoiceList = QuestionsSingleton.getInstance().getMultiChoiceList();
             openChoiceList = QuestionsSingleton.getInstance().getOpenChoiceList();
+            likertChoiceList = QuestionsSingleton.getInstance().getLikertChoiceList();
 
 
             expandableLayout.setRenderer(new ExpandableLayout.Renderer<QuestionCategory, Question>() {
@@ -107,7 +109,9 @@ public class SurveyPreview extends Fragment {
 
             if (singleChoiceList.size() > 0) {
                 expandableLayout.addSection(getSingleSection(singleChoiceList));
-
+            }
+            if (likertChoiceList.size() > 0) {
+                expandableLayout.addSection(getLikertSection(likertChoiceList));
 
             }
             if (multiChoiceList.size() > 0) {
@@ -119,7 +123,19 @@ public class SurveyPreview extends Fragment {
 
             }
 
+
         }
+    }
+
+    private Section getLikertSection(List<Question> likertChoiceList) {
+        Section<QuestionCategory, Question> section = new Section<>();
+
+        QuestionCategory questionCategory = new QuestionCategory("Likert Choices");
+
+        section.parent = questionCategory;
+        section.children.addAll(likertChoiceList);
+        section.expanded=true;
+        return section;
     }
 
     private Section getOpenSection(List<Question> openChoiceList) {

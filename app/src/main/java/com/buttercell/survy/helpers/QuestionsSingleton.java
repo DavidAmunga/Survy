@@ -29,6 +29,16 @@ public class QuestionsSingleton {
     public List<Question> multiChoiceList = new ArrayList<>();
     public List<Question> openChoiceList = new ArrayList<>();
 
+    public List<Question> getLikertChoiceList() {
+        return likertChoiceList;
+    }
+
+    public void setLikertChoiceList(List<Question> likertChoiceList) {
+        this.likertChoiceList = likertChoiceList;
+    }
+
+    public List<Question> likertChoiceList = new ArrayList<>();
+
 
     public List<Question> getSingleChoiceList() {
         return singleChoiceList;

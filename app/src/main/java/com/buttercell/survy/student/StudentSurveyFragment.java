@@ -112,7 +112,7 @@ public class StudentSurveyFragment extends Fragment {
 
         Log.d(TAG, "onViewCreated: " + userId);
 
-        student=Paper.book().read("currentStudent");
+        student = Paper.book().read("currentStudent");
         getNormalSurveys();
 
 
@@ -200,7 +200,31 @@ public class StudentSurveyFragment extends Fragment {
 
 
     private void setNewSurveys() {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Surveys");
+
+        surveyList.setVisibility(View.GONE);
+        completedSurveys.setVisibility(View.GONE);
+
+        String year = student.getCurrentYear();
+
+        Log.d(TAG, "setSurveys: " + student);
+        switch (year) {
+            case "1":
+                year = "One";
+                break;
+            case "2":
+                year = "Two";
+                break;
+            case "3":
+                year = "Three";
+                break;
+            case "4":
+                year = "Four";
+                break;
+        }
+
+
+        Query ref = FirebaseDatabase.getInstance().getReference("Surveys").orderByChild("year").equalTo(year);
+        ;
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -237,28 +261,30 @@ public class StudentSurveyFragment extends Fragment {
     }
 
     private void setSurveys() {
-        String year=student.getDateJoined();
-        switch (year)
-        {
+        surveyList.setVisibility(View.VISIBLE);
+        completedSurveys.setVisibility(View.VISIBLE);
+
+
+        String year = student.getCurrentYear();
+
+        Log.d(TAG, "setSurveys: " + student);
+        switch (year) {
             case "1":
-                year="One";
+                year = "One";
                 break;
             case "2":
-                year="Two";
+                year = "Two";
                 break;
             case "3":
-                year="Three";
+                year = "Three";
                 break;
             case "4":
-                year="Four";
+                year = "Four";
                 break;
         }
 
 
-
-
-
-        Query ref = FirebaseDatabase.getInstance().getReference("Surveys").orderByChild("year").equalTo(year);
+        Query ref = FirebaseDatabase.getInstance().getReference("Surveys");
 
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -291,7 +317,7 @@ public class StudentSurveyFragment extends Fragment {
                                 completedSurveys.setVisibility(View.GONE);
                             }
                         } else {
-
+                            Log.d(TAG, "onDataChange: New");
                             survey = postSnapshot.getValue(Survey.class);
 
                             int size = (int) dataSnapshot.getChildrenCount() - listDoneSurvey.size();

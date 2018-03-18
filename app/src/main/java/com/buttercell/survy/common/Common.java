@@ -24,6 +24,9 @@ public class Common {
     public static List<Question> singleChoiceList=new ArrayList<>();
     public static List<Question> multiChoiceList=new ArrayList<>();
     public static List<Question> openChoiceList=new ArrayList<>();
+    public static List<Question> likertChoiceList=new ArrayList<>();
+
 
     public static ArrayList<String> surveyDates=new ArrayList<>();
+
 }

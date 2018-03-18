@@ -16,28 +16,31 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-    <activity android:name=".student.StudentAccountSetup" />
-    <activity android:name=".student.StudentHome" />
-    <activity android:name=".Welcome"></activity>
-    <activity android:name=".lecturer.LecturerRegister" />
-    <activity android:name=".lecturer.LecturerAccountSetup" />
-    <activity android:name=".lecturer.LecturerHome" />
-    <activity android:name=".lecturer.LecturerLogin" />
-    <activity android:name=".lecturer.SetSurvey" />
-    <activity android:name=".lecturer.survey.SurveyTest" />
-    <activity android:name=".ViewSurvey" />
-    <activity android:name=".DoSurvey" />
-    <activity android:name=".SurveyDetails" />
-    <activity
-        android:name=".QuestionDetails"
-        android:parentActivityName=".SurveyDetails" />
-    <activity android:name=".AppIntro">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".student.StudentAccountSetup" />
+        <activity android:name=".student.StudentHome" />
+        <activity android:name=".Welcome" />
+        <activity android:name=".lecturer.LecturerRegister" />
+        <activity android:name=".lecturer.LecturerAccountSetup" />
+        <activity android:name=".lecturer.LecturerHome" />
+        <activity android:name=".lecturer.LecturerLogin" />
+        <activity android:name=".lecturer.SetSurvey" />
+        <activity android:name=".lecturer.survey.SurveyTest" />
+        <activity android:name=".ViewSurvey" />
+        <activity android:name=".DoSurvey" />
+        <activity android:name=".SurveyDetails" />
+        <activity
+            android:name=".QuestionDetails"
+            android:parentActivityName=".SurveyDetails" />
+        <activity android:name=".AppIntro">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-</application>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".TestActivity">
+
+        </activity>
+    </application>
 
 </manifest>

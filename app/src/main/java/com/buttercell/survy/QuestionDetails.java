@@ -84,29 +84,15 @@ public class QuestionDetails extends AppCompatActivity {
                     holder.setUserName(model.getUsername());
 
                     String answerNo = String.valueOf(adapter.getItemCount());
-                    answerCount.setText(String.valueOf(answerNo + " answers"));
+                    if (adapter.getItemCount() > 1) {
+                        answerCount.setText(String.valueOf(answerNo + " answers"));
+                    } else {
+                        answerCount.setText(String.valueOf(answerNo + " answer"));
+                    }
 
                     if (!listAnswers.contains(model.getAnswer())) {
                         listAnswers.add(model.getAnswer());
-
-
-//                        LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
-//                        View view = inflater.inflate(R.layout.answer_distribution_layout, null, false);
-//
-//                        TextView txtAnswerName=view.findViewById(R.id.txtAnswerName);
-//
-//                        txtAnswerName.setText(model.getAnswer());
-//
-//
-//
-//                        answerDistribution.addView(view);
-
                     }
-
-
-
-
-
 
                 }
 

@@ -50,6 +50,7 @@ public class StudentHome extends AppCompatActivity {
         homePager.setAdapter(studentAdapter);
 
         if (Paper.book().read("currentStudent") == null) {
+            Log.d(TAG, "onClick: Logging out!");
             startActivity(new Intent(getApplicationContext(), StudentLogin.class));
             overridePendingTransition(R.anim.animation_enter,R.anim.animation_leave);
             finish();

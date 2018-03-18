@@ -156,6 +156,16 @@ public class SurveyQuestions extends Fragment {
                     parentQuestionLayout.addView(questionView);
 
                 }
+                else if (item.equals("Likert Choice")) {
+                    parentQuestionLayout.removeAllViews();
+                    LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+                    questionView = inflater.inflate(R.layout.likert_choice, null);
+                    // Add the new row before the add field button.
+
+                    parentQuestionLayout.addView(questionView);
+
+                }
 
 
             }
@@ -262,6 +272,13 @@ public class SurveyQuestions extends Fragment {
                         Common.openChoiceList.add(openQuestion);
                         QuestionsSingleton.getInstance().setOpenChoiceList(Common.openChoiceList);
                         break;
+                    case "Likert Choice":
+                        Question likertQuestion=getSingleChoiceQuestionDetails(questionView);
+                        addLikertChoice(likertQuestion,id);
+                        Common.likertChoiceList.add(likertQuestion);
+                        QuestionsSingleton.getInstance().setLikertChoiceList(Common.likertChoiceList);
+                        break;
+
                 }
 
                 ref.child("questionOrder").setValue(questionOrder);
@@ -320,6 +337,33 @@ public class SurveyQuestions extends Fragment {
 
 
         firestore.collection("Surveys").document(id).collection("SingleChoice").document(choiceId).set(question).addOnSuccessListener(new OnSuccessListener() {
+            @Override
+            public void onSuccess(Object o) {
+                Toast.makeText(getContext(), "Added!", Toast.LENGTH_SHORT).show();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
+
+    private void addLikertChoice(Question question, String id) {
+
+
+        String choiceId = UUID.randomUUID().toString();
+
+        questionOrder.add(progress - 2, choiceId);
+
+
+        Map<String, Object> questionDetails = new HashMap<>();
+
+
+        firestore.collection("Surveys").document(id).collection("LikertChoice").document(choiceId).set(question).addOnSuccessListener(new OnSuccessListener() {
             @Override
             public void onSuccess(Object o) {
                 Toast.makeText(getContext(), "Added!", Toast.LENGTH_SHORT).show();

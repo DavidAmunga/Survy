@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="vertical"
+    tools:context=".TestActivity">
+
+    <TextView
+        android:id="@+id/txtQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"
+        android:text="Questasdjkaskdjasldkjasldkasjdlkasjdlaskdjaslkdjaion" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtChoice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/colorAccentDark"
+            android:textSize="20dp"
+            tools:text="Nowhere dasd asdlkas" />
+
+        <io.feeeei.circleseekbar.CircleSeekBar
+            android:id="@+id/likert_scale"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:padding="20dp"
+            app:wheel_can_touch="true"
+            app:wheel_cur_process="1"
+            app:wheel_has_cache="true"
+            app:wheel_max_process="4"
+            app:wheel_pointer_color="@color/colorRed"
+            app:wheel_pointer_radius="20dp"
+            app:wheel_reached_color="@color/colorAccentDark"
+            app:wheel_reached_has_corner_round="true"
+            app:wheel_reached_width="18dp"
+            app:wheel_scroll_only_one_circle="true"
+            app:wheel_unreached_color="@color/colorPrimary"
+            app:wheel_unreached_width="16dp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

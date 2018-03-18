@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,13 +70,14 @@ public class StudentProfileFragment extends Fragment {
 
         profileUser.setText(student.getName());
         profileCourse.setText(student.getCourse());
-        profileYear.setText("Year "+student.getDateJoined());
+        profileYear.setText("Year "+student.getCurrentYear());
 
         Glide.with(this).load(student.getImage()).into(profileImage);
 
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "onClick: Logging out!");
                 FirebaseAuth.getInstance().signOut();
                 Paper.book().destroy();
                 startActivity(new Intent(getContext(), StudentLogin.class));

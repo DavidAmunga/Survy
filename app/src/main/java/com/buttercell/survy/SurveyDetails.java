@@ -81,25 +81,40 @@ public class SurveyDetails extends AppCompatActivity {
 
 
                                     } else {
-                                        firestore.document(surveyKey).collection("MultiChoice").document(questionKeys.get(finalI1)).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+
+                                        firestore.document(surveyKey).collection("LikertChoice").document(questionKeys.get(finalI1)).addSnapshotListener(new EventListener<DocumentSnapshot>() {
                                             @Override
                                             public void onEvent(DocumentSnapshot documentSnapshot, FirebaseFirestoreException e) {
                                                 if (documentSnapshot.exists()) {
-                                                    Log.d(TAG, "onEvent: MultiChoice");
+                                                    Log.d(TAG, "onEvent: LikertChoice");
                                                     Question question = documentSnapshot.toObject(Question.class);
-                                                    goToQuestionDetails(thisQuestion, question, finalI, "MultiChoice");
+                                                    goToQuestionDetails(thisQuestion, question, finalI, "LikertChoice");
 
 
                                                 } else {
-                                                    firestore.document(surveyKey).collection("OpenChoice").document(questionKeys.get(finalI1)).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                                    firestore.document(surveyKey).collection("MultiChoice").document(questionKeys.get(finalI1)).addSnapshotListener(new EventListener<DocumentSnapshot>() {
                                                         @Override
                                                         public void onEvent(DocumentSnapshot documentSnapshot, FirebaseFirestoreException e) {
                                                             if (documentSnapshot.exists()) {
-                                                                Log.d(TAG, "onEvent: OpenChoice");
+                                                                Log.d(TAG, "onEvent: MultiChoice");
                                                                 Question question = documentSnapshot.toObject(Question.class);
-                                                                goToQuestionDetails(thisQuestion, question, finalI, "OpenChoice");
+                                                                goToQuestionDetails(thisQuestion, question, finalI, "MultiChoice");
 
 
+                                                            } else {
+                                                                firestore.document(surveyKey).collection("OpenChoice").document(questionKeys.get(finalI1)).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                                                    @Override
+                                                                    public void onEvent(DocumentSnapshot documentSnapshot, FirebaseFirestoreException e) {
+                                                                        if (documentSnapshot.exists()) {
+                                                                            Log.d(TAG, "onEvent: OpenChoice");
+                                                                            Question question = documentSnapshot.toObject(Question.class);
+                                                                            goToQuestionDetails(thisQuestion, question, finalI, "OpenChoice");
+
+
+                                                                        }
+
+                                                                    }
+                                                                });
                                                             }
 
                                                         }
@@ -110,17 +125,13 @@ public class SurveyDetails extends AppCompatActivity {
                                         });
 
                                     }
-
                                 }
                             });
 
-
                         }
-
 
                     }
                 });
-
             }
         });
 
@@ -130,9 +141,13 @@ public class SurveyDetails extends AppCompatActivity {
             List<Question> singleQuestion = (List<Question>) getIntent().getExtras().getSerializable("singleQuestions");
             List<Question> multiQuestion = (List<Question>) getIntent().getExtras().getSerializable("multiQuestions");
             List<Question> openQuestion = (List<Question>) getIntent().getExtras().getSerializable("openQuestions");
+            List<Question> likertQuestion = (List<Question>) getIntent().getExtras().getSerializable("likertQuestions");
 
             if (singleQuestion.size() > 0) {
                 expandableLayout.addSection(getSingleSection(singleQuestion));
+            }
+            if (likertQuestion.size() > 0) {
+                expandableLayout.addSection(getLikertSection(likertQuestion));
             }
             if (multiQuestion.size() > 0) {
                 expandableLayout.addSection(getMultiSection(multiQuestion));
@@ -192,6 +207,17 @@ public class SurveyDetails extends AppCompatActivity {
 
         section.parent = questionCategory;
         section.children.addAll(multiChoiceList);
+        section.expanded = true;
+        return section;
+    }
+
+    private Section getLikertSection(List<Question> likertChoiceList) {
+        Section<QuestionCategory, Question> section = new Section<>();
+
+        QuestionCategory questionCategory = new QuestionCategory("Likert Questions");
+
+        section.parent = questionCategory;
+        section.children.addAll(likertChoiceList);
         section.expanded = true;
         return section;
     }

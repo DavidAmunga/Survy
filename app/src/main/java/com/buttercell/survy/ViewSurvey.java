@@ -56,6 +56,7 @@ public class ViewSurvey extends AppCompatActivity {
     private List<Question> singleQuestion = new ArrayList<>();
     private List<Question> multiQuestion = new ArrayList<>();
     private List<Question> openQuestion = new ArrayList<>();
+    private List<Question> likertQuestion = new ArrayList<>();
 
     private CollectionReference firestore;
 
@@ -95,7 +96,7 @@ public class ViewSurvey extends AppCompatActivity {
                         @Override
                         public void onEvent(DocumentSnapshot documentSnapshot, FirebaseFirestoreException e) {
 
-                            String lecImage=documentSnapshot.get("image").toString();
+                            String lecImage = documentSnapshot.get("image").toString();
 
                             Glide.with(getApplicationContext()).load(survey.getImage()).into(surveyImage);
                             Glide.with(getApplicationContext()).load(lecImage).into(profileImage);
@@ -107,7 +108,6 @@ public class ViewSurvey extends AppCompatActivity {
 
                         }
                     });
-
 
 
                 }
@@ -132,6 +132,7 @@ public class ViewSurvey extends AppCompatActivity {
                     getSingleQuestions(questionKeys, key);
                     getMultiQuestions(questionKeys, key);
                     getOpenQuestions(questionKeys, key);
+                    getLikertQuestions(questionKeys, key);
                 }
 
                 @Override
@@ -151,6 +152,7 @@ public class ViewSurvey extends AppCompatActivity {
                     intent.putExtra("singleQuestions", (Serializable) singleQuestion);
                     intent.putExtra("multiQuestions", (Serializable) multiQuestion);
                     intent.putExtra("openQuestions", (Serializable) openQuestion);
+                    intent.putExtra("likertQuestions", (Serializable) likertQuestion);
 
                     startActivity(intent);
                 }
@@ -167,6 +169,7 @@ public class ViewSurvey extends AppCompatActivity {
                         intent.putExtra("singleQuestions", (Serializable) singleQuestion);
                         intent.putExtra("multiQuestions", (Serializable) multiQuestion);
                         intent.putExtra("openQuestions", (Serializable) openQuestion);
+                        intent.putExtra("likertQuestions", (Serializable) likertQuestion);
                         intent.putExtra("questionKeys", (Serializable) questionKeys);
 
                         startActivity(intent);
@@ -182,6 +185,28 @@ public class ViewSurvey extends AppCompatActivity {
         }
 
 
+    }
+
+    private void getLikertQuestions(List<String> questionKeys, String key) {
+        for (int i = 0; i < questionKeys.size(); i++) {
+            firestore.document(key).collection("LikertChoice").document(questionKeys.get(i)).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(DocumentSnapshot documentSnapshot, FirebaseFirestoreException e) {
+                    if (documentSnapshot.exists()) {
+
+                        Question question = documentSnapshot.toObject(Question.class);
+
+                        likertQuestion.add(question);
+                        Log.d(TAG, "onEvent: LikertChoice " + likertQuestion.size());
+
+                    }
+
+
+                }
+            });
+
+
+        }
     }
 
     private void getOpenQuestions(List<String> questionKeys, String key) {
