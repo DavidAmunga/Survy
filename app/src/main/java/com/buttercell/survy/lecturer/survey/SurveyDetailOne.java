@@ -119,7 +119,6 @@ public class SurveyDetailOne extends Fragment {
                             if (task.isSuccessful()) {
                                 String imageUrl = task.getResult().getDownloadUrl().toString();
 
-
                                 DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
                                 Date date = new Date();
                                 String surveyDate=dateFormat.format(date);

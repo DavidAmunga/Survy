@@ -195,6 +195,18 @@ public class DoSurvey extends AppCompatActivity {
                     answerSingleQuestions();
 
                 }
+                else if(singleQuestionList.size()==0 && likertQuestionList.size()>0)
+                {
+                    answerLikertQuestions();
+                }
+                else if(singleQuestionList.size()==0 && likertQuestionList.size()==0)
+                {
+                    answerMultiQuestions();
+                }
+                else if(singleQuestionList.size()==0 && multiQuestionList.size()==0 && likertQuestionList.size()==0)
+                {
+                    answerOpenQuestions();
+                }
 
 
             }
@@ -243,6 +255,12 @@ public class DoSurvey extends AppCompatActivity {
                             Log.d(TAG, "Likert:Start");
                             answerLikertQuestions();
                         }
+                        else if(multiQuestionList.size()>0)
+                        {
+                            Log.d(TAG, "onClick: Multi:Start");
+                            answerMultiQuestions();
+                        }
+
                     }
 
 
@@ -420,6 +438,11 @@ public class DoSurvey extends AppCompatActivity {
                         if (multiQuestionList.size() > 0) {
                             Log.d(TAG, "Multi:Start");
                             answerMultiQuestions();
+                        }
+                        else
+                        {
+                            Log.d(TAG, "onClick: Open:Start");
+                            answerOpenQuestions();;
                         }
                     }
 

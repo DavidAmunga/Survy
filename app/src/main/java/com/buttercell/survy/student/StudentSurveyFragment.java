@@ -313,6 +313,7 @@ public class StudentSurveyFragment extends Fragment {
                             surveyList.setAdapter(adapter);
 
                             if (listSurvey.size() == 0) {
+                                Log.d(TAG, "onDataChange: Empty Survey");
                                 surveyList.setVisibility(View.GONE);
                                 completedSurveys.setVisibility(View.GONE);
                             }
